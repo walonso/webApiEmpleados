@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecursosHumanos2", "RecursosHumanos2\RecursosHumanos2.csproj", "{C42E1AA4-80BA-4FE0-8B9E-1424425635AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestMSTest", "UnitTestProjectMSTest\UnitTestMSTest.csproj", "{1846BE6C-271D-41E8-BAD2-10A4F331867F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C42E1AA4-80BA-4FE0-8B9E-1424425635AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42E1AA4-80BA-4FE0-8B9E-1424425635AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42E1AA4-80BA-4FE0-8B9E-1424425635AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42E1AA4-80BA-4FE0-8B9E-1424425635AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1846BE6C-271D-41E8-BAD2-10A4F331867F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1846BE6C-271D-41E8-BAD2-10A4F331867F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1846BE6C-271D-41E8-BAD2-10A4F331867F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1846BE6C-271D-41E8-BAD2-10A4F331867F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D632BFA-F7F7-4B2A-948B-6CBB812ED526}
+	EndGlobalSection
+EndGlobal
