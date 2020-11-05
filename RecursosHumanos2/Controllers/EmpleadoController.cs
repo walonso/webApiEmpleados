@@ -11,6 +11,19 @@ namespace RecursosHumanos2.Controllers
     {
         public HttpResponse get()
         {
+            //[HttpGet("asyncsale")]
+            //public async IAsyncEnumerable<Product> GetOnSaleProductsAsync()
+            //{
+            //    var products = _repository.GetProductsAsync();
+
+            //    await foreach (var product in products)
+            //    {
+            //        if (product.IsOnSale)
+            //        {
+            //            yield return product;
+            //        }
+            //    }
+            //}
             throw new NotImplementedException();
         }
         public HttpResponse put(Empleado empleado)

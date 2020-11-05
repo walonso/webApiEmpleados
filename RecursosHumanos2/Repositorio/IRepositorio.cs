@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RecursosHumanos2.Repositorio
 {
-    interface IRepositorio<T> where T : Entidad 
+    public interface IRepositorio<T> where T : Entidad 
     {
         void Insertar(T entidad);
         void Actualizar(T entidad);

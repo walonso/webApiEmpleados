@@ -29,6 +29,37 @@ y dentro:
 y luego:
 - BulkService
 
+- usar https://joshclose.github.io/CsvHelper/
+- buscar CsvHelper usando nuget y instalarlo.
+
+- sera q cambio por database in memory?
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio
+
+- en startup
+* agregar en ConfigureServices(IServiceCollection services)
+  -> services.AddControllers();
+
+* Configure(IApplicationBuilder app, IWebHostEnvironment env)
+  -> en lugar de:
+  //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello World!");
+            //    });
+            //});
+
+Usar:
+  app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            
+*¨** Postman:
+http://localhost:63391/api/Bulk
+
+
 4. Bulk controller
 - agregar Controller
 - escoger Controlador API vacio

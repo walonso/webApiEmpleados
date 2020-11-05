@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RecursosHumanos2.Repositorio;
 using RecursosHumanos2.Repositorio.Entidades;
+using RecursosHumanos2.Servicios;
+using RecursosHumanos2.Servicios.Interfaces;
 
 namespace RecursosHumanos2
 {
@@ -18,9 +20,12 @@ namespace RecursosHumanos2
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
             //https://stackoverflow.com/questions/33566075/generic-repository-in-asp-net-core-without-having-a-separate-addscoped-line-per
             //services.AddScoped(typeof(IRepositorio<>), typeof(Memoria<>));
-            //services.AddScoped<IRepositorio<Empleado>, Memoria<Empleado>>();
+            services.AddSingleton<IRepositorio<Empleado>, Memoria<Empleado>>();
+            services.AddScoped<IBulkService, BulkService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,11 +40,16 @@ namespace RecursosHumanos2
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello World!");
+            //    });
+            //});
         }
     }
 }

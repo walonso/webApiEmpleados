@@ -4,16 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RecursosHumanos2.Servicios.Interfaces;
 
 namespace RecursosHumanos2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class BulkController : ControllerBase
-    { 
-        public HttpResponse post(string archivo)
+    {
+        private IBulkService _bulkService;
+
+        public BulkController(IBulkService bulkService)
         {
-            throw new NotImplementedException();
+            _bulkService = bulkService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(string archivo)
+        {
+            await _bulkService.Cargar(archivo);
+            return Ok();
         }
     }
 }

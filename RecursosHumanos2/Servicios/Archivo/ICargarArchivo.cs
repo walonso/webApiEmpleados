@@ -7,6 +7,6 @@ namespace RecursosHumanos2.Servicios.Archivo
 {
     public interface ICargarArchivo
     {
-        string Cargar(string archivo);
+        IEnumerable<T> ObtenerDatos<T>(string archivo);
     }
 }
