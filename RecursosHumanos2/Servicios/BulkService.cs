@@ -4,6 +4,7 @@ using RecursosHumanos2.Servicios.Archivo;
 using RecursosHumanos2.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,11 +19,11 @@ namespace RecursosHumanos2.Servicios
             _repositorio = repositorio;
         }
 
-        public async Task Cargar(string archivo)
+        public async Task Cargar(StreamReader archivoStream, string archivo)
         {
             FabricaArchivo fabrica = new FabricaArchivo();
             ICargarArchivo manejador = fabrica.ObtenerManejadorCargaArchivo(archivo);
-            IEnumerable<Empleado> empleados = manejador.ObtenerDatos<Empleado>(archivo);
+            IEnumerable<Empleado> empleados = manejador.ObtenerDatos<Empleado>(archivoStream);
 
             await Task.Run(() => CargarLista(empleados));
         }

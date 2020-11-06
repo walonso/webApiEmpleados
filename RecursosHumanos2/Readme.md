@@ -55,7 +55,21 @@ Usar:
                 endpoints.MapControllers();
             });
 
-            
+** OJO: Async programming
+
+** Ojo: fileupload. (indicar q ahora en net core se usa IFormFile y depende de si es un archivo grande o pequeño)
+https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-3.1
+-> procesar el archivo:
+-> https://stackoverflow.com/questions/36432028/how-to-convert-a-file-into-byte-array-in-memory
+
+
+** To avoid the MultiPartBodyLength error, we are going to modify our configuration in the Startup.cs class:
+https://code-maze.com/upload-files-dot-net-core-angular/
+
+** Ojo: Configurar CORS:
+https://medium.com/nerd-for-tech/how-to-upload-files-in-net-core-web-api-and-react-36a8fbf5c9e8
+
+
 *¨** Postman:
 http://localhost:63391/api/Bulk
 
