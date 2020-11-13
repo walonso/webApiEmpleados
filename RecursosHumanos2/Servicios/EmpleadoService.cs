@@ -7,6 +7,11 @@ namespace RecursosHumanos2.Servicios
 {
     public class EmpleadoService
     {
+        public void ObtenerTodo()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Crear()
         {
             throw new NotImplementedException();

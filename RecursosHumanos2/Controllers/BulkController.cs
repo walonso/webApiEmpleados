@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RecursosHumanos2.Model;
 using RecursosHumanos2.Repositorio.Entidades;
 using RecursosHumanos2.Servicios.Interfaces;
 
@@ -27,8 +26,7 @@ namespace RecursosHumanos2.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(string archivo)
         {
-            await _bulkService.Cargar(archivo);
-
+            // _bulkService.Cargar(archivo);
             //FileUpload.
             return Ok();
         }
@@ -75,19 +73,21 @@ namespace RecursosHumanos2.Controllers
             {
                 using (var reader = new StreamReader(file.OpenReadStream()))
                 {
-                    string line = String.Empty;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        Console.WriteLine(line);
-                        line = reader.ReadLine();
-                        var particion = line.Split(";");
-                        Empleado empleado = new Empleado
-                        {
-                            Nombre = particion[0],
-                            Cargo = particion[1]
-                        };
-                        Console.WriteLine(empleado);
-                    }
+                    _bulkService.CargarAsync(reader, file.FileName);
+
+                    //string line = String.Empty;
+                    //while ((line = reader.ReadLine()) != null)
+                    //{
+                    //    Console.WriteLine(line);
+                    //    line = reader.ReadLine();
+                    //    var particion = line.Split(";");
+                    //    Empleado empleado = new Empleado
+                    //    {
+                    //        Nombre = particion[0],
+                    //        Cargo = particion[1]
+                    //    };
+                    //    Console.WriteLine(empleado);
+                    //}
                     /*string contentAsString = reader.ReadToEnd();
                     byte[] bytes = new byte[contentAsString.Length * sizeof(char)];
                     System.Buffer.BlockCopy(contentAsString.ToCharArray(), 0, bytes, 0, bytes.Length);*/

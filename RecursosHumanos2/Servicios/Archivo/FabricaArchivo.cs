@@ -10,11 +10,11 @@ namespace RecursosHumanos2.Servicios.Archivo
     {
         public ICargarArchivo ObtenerManejadorCargaArchivo(string archivo)
         {
-            var extension = Path.GetExtension(archivo);
+            var extension = Path.GetExtension(archivo).ToLower();
             //Switch case incluido en C# 8
             ICargarArchivo manejadorArchivos = extension switch
             {
-                "csv" => new CSV(),
+                ".csv" => new CSV(),
                 _ => throw new NotSupportedException()
             };
 

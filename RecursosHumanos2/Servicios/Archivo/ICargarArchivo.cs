@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using RecursosHumanos2.Repositorio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.IO;

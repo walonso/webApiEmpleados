@@ -19,13 +19,14 @@ namespace RecursosHumanos2.Servicios
             _repositorio = repositorio;
         }
 
-        public async Task Cargar(StreamReader archivoStream, string archivo)
+        public async Task CargarAsync(StreamReader archivoStream, string archivo)
         {
             FabricaArchivo fabrica = new FabricaArchivo();
             ICargarArchivo manejador = fabrica.ObtenerManejadorCargaArchivo(archivo);
             IEnumerable<Empleado> empleados = manejador.ObtenerDatos<Empleado>(archivoStream);
 
-            await Task.Run(() => CargarLista(empleados));
+            CargarLista(empleados);
+            await Task.CompletedTask;
         }
 
         private void CargarLista(IEnumerable<Empleado> empleados)
