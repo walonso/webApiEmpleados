@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RecursosHumanos2.Repositorio.Entidades;
+using RecursosHumanos2.Servicios.Interfaces;
 using System;
 
 namespace RecursosHumanos2.Controllers
@@ -9,8 +10,19 @@ namespace RecursosHumanos2.Controllers
     [ApiController]
     public class EmpleadoController : ControllerBase
     {
-        public HttpResponse get()
+        private IEmpleadoService _empleadoService;
+
+        public EmpleadoController(IEmpleadoService empleadoService)
         {
+            _empleadoService = empleadoService;
+        }
+
+        [HttpGet()]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        public IActionResult Get()
+        {
+            return Ok(_empleadoService.ObtenerTodo());
             //[HttpGet("asyncsale")]
             //public async IAsyncEnumerable<Product> GetOnSaleProductsAsync()
             //{
@@ -24,7 +36,6 @@ namespace RecursosHumanos2.Controllers
             //        }
             //    }
             //}
-            throw new NotImplementedException();
         }
         public HttpResponse put(Empleado empleado)
         {

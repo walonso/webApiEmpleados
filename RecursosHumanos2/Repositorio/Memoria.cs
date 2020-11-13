@@ -13,6 +13,11 @@ namespace RecursosHumanos2.Repositorio
             listaEnMemoria = new List<T>();
         }
 
+        public List<T> Obtener()
+        {
+            return listaEnMemoria;
+        }
+
         public dynamic Obtener(T entidad)
         {
             var empleado = listaEnMemoria.FirstOrDefault(x => x.Id == entidad.Id);

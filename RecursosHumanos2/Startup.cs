@@ -26,6 +26,7 @@ namespace RecursosHumanos2
             //services.AddScoped(typeof(IRepositorio<>), typeof(Memoria<>));
             services.AddSingleton<IRepositorio<Empleado>, Memoria<Empleado>>();
             services.AddScoped<IBulkService, BulkService>();
+            services.AddScoped<IEmpleadoService, EmpleadoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

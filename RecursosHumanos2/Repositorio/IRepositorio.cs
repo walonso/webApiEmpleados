@@ -7,6 +7,7 @@ namespace RecursosHumanos2.Repositorio
 {
     public interface IRepositorio<T> where T : Entidad 
     {
+        List<T> Obtener();
         void Insertar(T entidad);
         void Actualizar(T entidad);
         void Borrar(int id);
