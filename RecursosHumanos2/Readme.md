@@ -126,13 +126,16 @@ docker run -d -p 5000:80 --name rrhhapp rrhh:1.0
 ** net core 3.1 windows
 - publicar usando visual studio.
 
-7.3 desplegar a Azure web Service windows
+7.3 desplegar a Azure app Service windows
 
-7.4 desplegar a Azure web Service linux
+7.4 desplegar a Azure app Service linux
 
-7.5 Container registry
+7.5 desplegar a azure app service container
+https://docs.microsoft.com/en-us/visualstudio/containers/overview?view=vs-2019
 
-- Container Instances.
+7.8 Container Instances. (puede usar una imagen externa o uno registrado en el azure container registry)
+
+- Kubernetes
 - Service Fabric
 - VMs?
 - Azure function?
