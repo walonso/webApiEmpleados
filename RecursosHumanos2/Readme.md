@@ -62,7 +62,7 @@ https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnet
 -> procesar el archivo:
 -> https://stackoverflow.com/questions/36432028/how-to-convert-a-file-into-byte-array-in-memory
 
-
+#################################
 ** To avoid the MultiPartBodyLength error, we are going to modify our configuration in the Startup.cs class:
 https://code-maze.com/upload-files-dot-net-core-angular/
 
@@ -72,7 +72,7 @@ https://medium.com/nerd-for-tech/how-to-upload-files-in-net-core-web-api-and-rea
 
 *¨** Postman:
 http://localhost:63391/api/Bulk
-
+#########################################
 
 4. Bulk controller
 - agregar Controller
@@ -91,3 +91,40 @@ crear EmpleadoService
 - escoger Controlador API vacio
 - colocarle el controlador EmpleadoController
 - implementarlo de una vez
+
+
+7. Despliegue:
+7.1 desplegar a docker local / Kubernetes.
+
+a. download docker (desktop)
+https://www.docker.com/get-started
+https://docs.docker.com/docker-for-windows/install/
+
+b. instalar y probar:
+https://hub.docker.com/editions/community/docker-ce-desktop-windows
+
+c. abrir docker.
+d. puede salir un problema de wsl:
+https://docs.microsoft.com/en-us/windows/wsl/install-win10
+e. en cmd escribir docker version y docker ps.
+
+f. desplegar a docker. (windows con IIS) (donde se publica, todo meterlo a otro folder app)
+https://www.textcontrol.com/blog/2020/06/23/deploying-an-aspnet-core-web-applications-to-docker/
+https://docs.docker.com/engine/examples/dotnetcore/
+https://www.c-sharpcorner.com/article/build-and-deploy-asp-net-webapi-using-docker/
+- crear folder dentroo del proy (docker)
+- crear carpeta windows y archivo Dockerfile
+- publicar la aplicacion aun folder.
+(Open the Dockerfile in a text editor such as Visual Studio Code. The Dockerfile script creates a Windows Server container with all requirements including .NET Core run-times and Visual C++ Redistributables.)
+- linea de comandos apunte a la carpeta publish y ejecutar comando: (-t es de tag)
+docker build -t rrhh:1.0 .
+
+
+
+
+
+- desplegar a Azure web Service
+- Container Instances.
+- Service Fabric
+- VMs?
+- Azure function?
