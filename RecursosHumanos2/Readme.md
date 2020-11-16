@@ -108,22 +108,30 @@ d. puede salir un problema de wsl:
 https://docs.microsoft.com/en-us/windows/wsl/install-win10
 e. en cmd escribir docker version y docker ps.
 
-f. desplegar a docker. (windows con IIS) (donde se publica, todo meterlo a otro folder app)
-https://www.textcontrol.com/blog/2020/06/23/deploying-an-aspnet-core-web-applications-to-docker/
+f. desplegar a docker. (windows)
 https://docs.docker.com/engine/examples/dotnetcore/
-https://www.c-sharpcorner.com/article/build-and-deploy-asp-net-webapi-using-docker/
 - crear folder dentroo del proy (docker)
 - crear carpeta windows y archivo Dockerfile
-- publicar la aplicacion aun folder.
 (Open the Dockerfile in a text editor such as Visual Studio Code. The Dockerfile script creates a Windows Server container with all requirements including .NET Core run-times and Visual C++ Redistributables.)
 - linea de comandos apunte a la carpeta publish y ejecutar comando: (-t es de tag)
 docker build -t rrhh:1.0 .
+- corra el container:
+docker run -d -p 5000:80 --name rrhhapp rrhh:1.0
+- ya se puede ver en el UI de docker q la aplicacion está corriendo
 
 
+7.2 desplegar a Azure web Service windows
+- crear app service en azure. en windows
+** testrrhhwindows
+** net core 3.1 windows
+- publicar usando visual studio.
 
+7.3 desplegar a Azure web Service windows
 
+7.4 desplegar a Azure web Service linux
 
-- desplegar a Azure web Service
+7.5 Container registry
+
 - Container Instances.
 - Service Fabric
 - VMs?
