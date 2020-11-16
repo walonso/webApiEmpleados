@@ -11,6 +11,9 @@ using RecursosHumanos2.Repositorio;
 using RecursosHumanos2.Repositorio.Entidades;
 using RecursosHumanos2.Servicios;
 using RecursosHumanos2.Servicios.Interfaces;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Azure.Core;
 
 namespace RecursosHumanos2
 {
@@ -38,6 +41,7 @@ namespace RecursosHumanos2
             }
 
             app.UseRouting();
+                      
 
             app.UseEndpoints(endpoints =>
             {

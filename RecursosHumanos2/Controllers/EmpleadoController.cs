@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Core;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RecursosHumanos2.Repositorio.Entidades;
 using RecursosHumanos2.Servicios.Interfaces;
@@ -22,6 +25,23 @@ namespace RecursosHumanos2.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         public IActionResult Get()
         {
+            SecretClientOptions options = new SecretClientOptions()
+            {
+                Retry =
+                {
+                    Delay= TimeSpan.FromSeconds(2),
+                    MaxDelay = TimeSpan.FromSeconds(16),
+                    MaxRetries = 5,
+                    Mode = RetryMode.Exponential
+                 }
+            };
+            var client = new SecretClient(new Uri("https://keyvaulttestrrhh.vault.azure.net/"), new DefaultAzureCredential(), options);
+
+            KeyVaultSecret secret = client.GetSecret("secretotestrrhh");
+
+            string secretValue = secret.Value;
+            return Ok(secretValue);
+
             return Ok(_empleadoService.ObtenerTodo());
             //[HttpGet("asyncsale")]
             //public async IAsyncEnumerable<Product> GetOnSaleProductsAsync()
