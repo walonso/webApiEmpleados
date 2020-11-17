@@ -3,6 +3,7 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using RecursosHumanos2.Repositorio.Entidades;
 using RecursosHumanos2.Servicios.Interfaces;
 using System;
@@ -14,10 +15,12 @@ namespace RecursosHumanos2.Controllers
     public class EmpleadoController : ControllerBase
     {
         private IEmpleadoService _empleadoService;
+        private readonly IConfiguration _config;
 
-        public EmpleadoController(IEmpleadoService empleadoService)
+        public EmpleadoController(IEmpleadoService empleadoService, IConfiguration config)
         {
             _empleadoService = empleadoService;
+            _config = config;
         }
 
         [HttpGet()]
@@ -25,7 +28,13 @@ namespace RecursosHumanos2.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         public IActionResult Get()
         {
-            SecretClientOptions options = new SecretClientOptions()
+            //User secrets
+            var moviesConfig = _config.GetSection("Secrets")
+                                .Get<Secrets>();
+            var moviesApiKey = moviesConfig.ServiceApiKey;
+
+            //Key vault
+            /*SecretClientOptions options = new SecretClientOptions()
             {
                 Retry =
                 {
@@ -40,7 +49,8 @@ namespace RecursosHumanos2.Controllers
             KeyVaultSecret secret = client.GetSecret("secretotestrrhh");
 
             string secretValue = secret.Value;
-            return Ok(secretValue);
+            */
+            return Ok(moviesApiKey);
 
             return Ok(_empleadoService.ObtenerTodo());
             //[HttpGet("asyncsale")]

@@ -121,6 +121,7 @@ docker run -d -p 5000:80 --name rrhhapp rrhh:1.0
 
 
 7.2 desplegar a Azure web Service windows
+https://docs.microsoft.com/es-es/azure/app-service/overview-hosting-plans
 - crear app service en azure. en windows
 ** testrrhhwindows
 ** net core 3.1 windows
@@ -134,6 +135,45 @@ docker run -d -p 5000:80 --name rrhhapp rrhh:1.0
 https://docs.microsoft.com/en-us/visualstudio/containers/overview?view=vs-2019
 
 7.8 Container Instances. (puede usar una imagen externa o uno registrado en el azure container registry)
+https://docs.microsoft.com/en-us/azure/container-instances/container-instances-quickstart-portal
+
+8. Como manejar los secretos:
+8.1 Key vault:
+https://docs.microsoft.com/en-us/azure/key-vault/general/tutorial-net-create-vault-azure-web-app
+- crea el key vult.
+- agregar la referncia al proyecto using Azure.Security.KeyVault.Secrets;
+- agergar el codigo en el controller empleado:
+//Key vault
+            /*SecretClientOptions options = new SecretClientOptions()
+            {
+                Retry =
+                {
+                    Delay= TimeSpan.FromSeconds(2),
+                    MaxDelay = TimeSpan.FromSeconds(16),
+                    MaxRetries = 5,
+                    Mode = RetryMode.Exponential
+                 }
+            };
+            var client = new SecretClient(new Uri("https://keyvaulttestrrhh.vault.azure.net/"), new DefaultAzureCredential(), options);
+
+            KeyVaultSecret secret = client.GetSecret("secretotestrrhh");
+
+            string secretValue = secret.Value;
+
+
+
+8.2 User management:
+https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-5.0&tabs=windows
+en el propio server se almacenan estas llaves, cada desarrollador las pondra en su maquina en un json.
+Al desplegarlo en un azure app service es configyurar un nuev secreto en Configuracion / Configuracion de la aplicacion.
+
+8.3 App Configurati0n:
+usa el user management del punto anterior, sin embargo, este se conecta al component "App configuration" de azure portal.
+https://docs.microsoft.com/en-us/azure/azure-app-configuration/quickstart-aspnet-core-app?tabs=core3x
+
+
+
+
 
 - Kubernetes
 - Service Fabric
